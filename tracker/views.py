@@ -146,6 +146,6 @@ def edit_expense(request,expense_id):
         exs.Amount=amount
         exs.description=description
         exs.save()
-        return redirect("/Expense/"),
+        return redirect("/expense/"),
 
-    return render(request,"edit_expense.html",{"exs":inc,"wal":wal})
+    return render(request,"edit_expense.html",{"exs":exs,"wal":wal})
