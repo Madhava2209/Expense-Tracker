@@ -1,0 +1,24 @@
+{% extends 'bootswatch.html' %}
+
+{% block body %}
+
+<div>
+    <form action="/edit_expense/{{exs.id}}/" method="post" class="form-group">
+     {% csrf_token %}
+     <p>Wallet</p>
+     <select name="wallet" class="form-control">
+         {% for wal in wal %}
+         <option value="{{wal.id}}">{{wal.name}}</option>
+         {% endfor %}
+     </select>
+     <p>Title</p>
+     <input type="text" name="title" placeholder="Title" class="form-control" value="{{exs.title}}">
+     <p>Description</p>
+     <input type="text" name="description" placeholder="Description" class="form-control" value="{{exs.description}}">
+     <p>Amount</p>
+     <input type="number" name="amount" placeholder="Enter amount" class="form-control" value="{{exs.Amount}}" >
+     <br>
+     <button type="submit" class="btn btn-outline-success">Edit</button>
+     </form>
+</div>
+{% endblock %}

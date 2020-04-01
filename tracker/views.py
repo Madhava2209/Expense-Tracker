@@ -109,3 +109,43 @@ def edit_wallet(request,wallet_id):
         return redirect("/wallet/")
 
     return render(request,"edit_wallet.html",{"wal":wal})
+
+
+def edit_income(request,income_id):
+    inc=Income.objects.get(pk=income_id)
+    wal=Wallet.objects.filter(user=request.user)
+    if request.method=="POST":
+        title=request.POST["title"]
+        wallet_id=request.POST["wallet"]
+        amount=request.POST["amount"]
+        description=request.POST["description"]
+        wallet_instance=Wallet.objects.get(pk=wallet_id)
+
+        inc.title=title
+        inc.wallet=wallet_instance
+        inc.Amount=amount
+        inc.description=description
+        inc.save()
+        return redirect("/income/"),
+
+    return render(request,"edit_income.html",{"inc":inc,"wal":wal})
+
+
+def edit_expense(request,expense_id):
+    exs=Expense.objects.get(pk=expense_id)
+    wal=Wallet.objects.filter(user=request.user)
+    if request.method=="POST":
+        title=request.POST["title"]
+        wallet_id=request.POST["wallet"]
+        amount=request.POST["amount"]
+        description=request.POST["description"]
+        wallet_instance=Wallet.objects.get(pk=wallet_id)
+
+        exs.title=title
+        exs.wallet=wallet_instance
+        exs.Amount=amount
+        exs.description=description
+        exs.save()
+        return redirect("/Expense/"),
+
+    return render(request,"edit_expense.html",{"exs":inc,"wal":wal})
