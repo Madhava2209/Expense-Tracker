@@ -1,0 +1,29 @@
+{% extends 'bootswatch.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-12">
+        <h1>Wallet</h1>
+       <table class="table table-striped">
+           <tr>
+               <th>Wallet Name</th>
+               <th>Balance amount</th>
+               <th>Last transaction</th>
+               <th>Edit</th>
+               <th>Delete</th>
+           </tr>
+       {% for wal in wallet %}
+           <tr>
+               <td>{{wal.name}}</td>
+               <td>{{wal.balance}}</td>
+               <td>{{wal.last_transaction}}</td>
+               <td><a href="/edit/">Edit</a></td>
+               <td><a href="/delete/">Delete</a></td>
+           </tr>
+       {% endfor %}
+      </table>
+    </div>
+   </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'bootswatch.html' %}
+
+{% block body %}
+
+
+
+<div class="row">
+    <div class="col-12">
+        <h1>Income</h1>
+       <table class="table table-striped">
+           <tr>
+               <th>Title</th>
+               <th>Description</th>
+               <th>Amount</th>
+               <th>TimeStamp</th>
+               
+               
+  
+           </tr>
+       {% for inc in income %}
+           <tr>
+               <td>{{inc.title}}</td>
+               <td>{{inc.description}}</td>
+               <td>{{inc.amount}}</td>
+               <td>{{inc.timestamp}}</td>
+           </tr>
+       {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

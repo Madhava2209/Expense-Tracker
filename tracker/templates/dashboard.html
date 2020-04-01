@@ -1,0 +1,67 @@
+{% extends 'bootswatch.html' %}
+
+{% block body %}
+ <div class="container">
+    <div class="row-1">
+        <div class="col-12">
+            <h1>Wallet</h1>
+           <table class="table table-striped">
+               <tr>
+                   <th>Wallet Name</th>
+                   <th>Balance amount</th>
+                   <th>Last transaction</th>
+               </tr>
+           {% for wal in wallet %}
+               <tr>
+                   <td>{{wal.name}}</td>
+                   <td>{{wal.balance}}</td>
+                   <td>{{wal.last_transaction}}</td>
+               </tr>
+           {% endfor %}
+          </table>
+        </div>
+       </div>
+     <div class="row">
+         <div class="col-5">
+             <h1>Expense</h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>TimeStamp</th>
+                </tr>
+            {% for exs in expense %}
+                <tr>
+                    <td>{{exs.title}}</td>
+                    <td>{{exs.description}}</td>
+                    <td>{{exs.amount}}</td>
+                    <td>{{exs.timestamp}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         </div>
+         <div class="col-5">
+            <h1>Income</h1>
+           <table class="table table-striped">
+               <tr>
+                   <th>Title</th>
+                   <th>Description</th>
+                   <th>Amount</th>
+                   <th>TimeStamp</th>
+               </tr>
+           {% for inc in income %}
+               <tr>
+                   <td>{{inc.title}}</td>
+                   <td>{{inc.description}}</td>
+                   <td>{{inc.amount}}</td>
+                   <td>{{inc.timestamp}}</td>
+               </tr>
+           {% endfor %}
+           </table>
+        </div>
+    </div>    
+ </div>
+
+
+{% endblock %}
