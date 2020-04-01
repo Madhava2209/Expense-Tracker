@@ -33,7 +33,6 @@ def create_wallet(request):
     if request.method=="POST":
         wallet_name=request.POST["wallet_name"]
         wallet_balance=request.POST["wallet_balance"]
-
         wallet_instance=Wallet.objects.create(name=wallet_name,balance=wallet_balance,user=request.user)
         return redirect('/wallet/')
 
@@ -42,12 +41,56 @@ def create_wallet(request):
 def create_income(request):
     if request.method=="POST":
         title=request.POST["title"]
-        income_instance=Wallet.objects.create(name=wallet_name,balance=wallet_balance,user=request.user)
-        return redirect('/wallet/')
+        wallet_id=request.POST["wallet"]
+        amount=request.POST["amount"]
+        description=request.POST["description"]
 
-    return redirect("/wallet/")
+        wallet_instance=Wallet.objects.get(pk=wallet_id)
+        income_instance=Income.objects.create(
+            user=request.user,
+            title=title,
+            wallet=wallet_instance,
+            Amount=amount,
+            description=description)
+        wallet_instance.balance +=int(amount)
+        wallet_instance.save()
+        return redirect('/income/')
+
+    return redirect("/income/")
 
 
 def create_expense(request):
+    if request.method=="POST":
+        title=request.POST["title"]
+        wallet_id=request.POST["wallet"]
+        amount=request.POST["amount"]
+        description=request.POST["description"]
 
-    return redirect('/expense/')
+        wallet_instance=Wallet.objects.get(pk=wallet_id)
+        expense_instance=Expense.objects.create(
+            user=request.user,
+            title=title,
+            wallet=wallet_instance,
+            Amount=amount,
+            description=description)
+        wallet_instance.balance -=int(amount)
+        wallet_instance.save()
+        return redirect('/expense/')
+
+    return redirect("/expense/")
+
+
+def delete_wallet(request,wallet_id):
+    wal=Wallet.objects.get(pk=wallet_id)
+    wal.delete()
+    return redirect("/wallet/")
+
+def delete_income(request,income_id):
+    inc=Income.objects.get(pk=income_id)
+    inc.delete()
+    return redirect("/income/")
+
+def delete_expense(request,expense_id):
+    exs=Expense.objects.get(pk=expense_id)
+    exs.delete()
+    return redirect("/expense/")
