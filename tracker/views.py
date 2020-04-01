@@ -94,3 +94,18 @@ def delete_expense(request,expense_id):
     exs=Expense.objects.get(pk=expense_id)
     exs.delete()
     return redirect("/expense/")
+
+def edit_wallet(request,wallet_id):
+    wal=Wallet.objects.get(pk=wallet_id)
+    if request.method=="POST":
+        
+        name=request.POST["name"]
+        balance=request.POST["balance"]
+        
+
+        wal.name=name
+        wal.balance=balance
+        wal.save()
+        return redirect("/wallet/")
+
+    return render(request,"edit_wallet.html",{"wal":wal})

@@ -1,0 +1,17 @@
+{% extends 'bootswatch.html' %}
+
+{% block body %}
+
+<div>
+    <form action="/edit_wallet/{{wal.id}}/" method="post" class="form-group">
+     {% csrf_token %}
+     <p>Wallet Name</p>
+     <input type="text" name="name" value="{{wal.name}}" class="form-control">
+     <p>Balance</p>
+     <input type="number" name="balance" value="{{wal.balance}}" class="form-control" >
+     <br>
+     <button type="submit" class="btn btn-outline-success">Edit</button>
+     </form>
+</div>
+
+{% endblock %}

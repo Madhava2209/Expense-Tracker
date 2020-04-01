@@ -12,4 +12,6 @@ urlpatterns = [
     path('delete_wallet/<int:wallet_id>/',delete_wallet),
     path('delete_income/<int:income_id>/',delete_income),
     path('delete_expense/<int:expense_id>/',delete_expense),
+    path("edit_wallet/<int:wallet_id>/",edit_wallet),
+    
 ]
