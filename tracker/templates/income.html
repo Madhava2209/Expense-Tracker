@@ -4,10 +4,10 @@
 
 
 
-<div class="row">
-    <div class="col-12">
+<div class="container" style="display: flex; width: 100%;padding: 20px;">
+    <div style="margin-right: 30px;">
         <h1>Income</h1>
-       <table class="table table-striped">
+       <table class="table table-striped" style="width: 700px;">
            <tr>
                <th>Title</th>
                <th>Description</th>
@@ -26,10 +26,12 @@
                <td><a href="/delete_income/{{inc.id}}/">Delete</a></td>
            </tr>
        {% endfor %}
+       </table>
     </div>
 
-</div>
-<div>
+
+<div style="max-width: 300px;">
+    <h1>Create Income</h1>
     <form action="/create_income/" method="post" class="form-group">
      {% csrf_token %}
      <p>Wallet</p>
@@ -49,5 +51,5 @@
      </form>
 </div>
 
-
+</div>
 {% endblock %}

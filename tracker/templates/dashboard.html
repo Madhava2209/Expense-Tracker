@@ -2,8 +2,8 @@
 
 {% block body %}
  <div class="container">
-    <div class="row-1">
-        <div class="col-12">
+    <div class="row">
+        <div class="col-8" style="padding-left: 200px;">
             <h1>Wallet</h1>
            <table class="table table-striped">
                <tr>
@@ -21,8 +21,9 @@
           </table>
         </div>
        </div>
+       <hr>
      <div class="row">
-         <div class="col-5">
+         <div class="col-6" >
              <h1>Expense</h1>
             <table class="table table-striped">
                 <tr>
@@ -35,13 +36,13 @@
                 <tr>
                     <td>{{exs.title}}</td>
                     <td>{{exs.description}}</td>
-                    <td>{{exs.amount}}</td>
+                    <td>{{exs.Amount}}</td>
                     <td>{{exs.timestamp}}</td>
                 </tr>
             {% endfor %}
             </table>
          </div>
-         <div class="col-5">
+         <div class="col-6">
             <h1>Income</h1>
            <table class="table table-striped">
                <tr>
@@ -54,7 +55,7 @@
                <tr>
                    <td>{{inc.title}}</td>
                    <td>{{inc.description}}</td>
-                   <td>{{inc.amount}}</td>
+                   <td>{{inc.Amount}}</td>
                    <td>{{inc.timestamp}}</td>
                </tr>
            {% endfor %}

@@ -112,23 +112,23 @@ def edit_wallet(request,wallet_id):
 
 
 def edit_income(request,income_id):
-    inc=Income.objects.get(pk=income_id)
+    inc_instance=Income.objects.get(pk=income_id)
     wal=Wallet.objects.filter(user=request.user)
     if request.method=="POST":
         title=request.POST["title"]
-        wallet_id=request.POST["wallet"]
         amount=request.POST["amount"]
         description=request.POST["description"]
+        wallet_id=request.POST["wallet"]
+        inc_instance=Income.objects.get(pk=income_id)
         wallet_instance=Wallet.objects.get(pk=wallet_id)
+        inc_instance.title=title
+        inc_instance.Amount=amount
+        inc_instance.description=description
+        inc_instance.wallet=wallet_instance
+        inc_instance.save()
+        return redirect("/income/")
 
-        inc.title=title
-        inc.wallet=wallet_instance
-        inc.Amount=amount
-        inc.description=description
-        inc.save()
-        return redirect("/income/"),
-
-    return render(request,"edit_income.html",{"inc":inc,"wal":wal})
+    return render(request,"edit_income.html",{"inc":inc_instance})
 
 
 def edit_expense(request,expense_id):
@@ -146,6 +146,6 @@ def edit_expense(request,expense_id):
         exs.Amount=amount
         exs.description=description
         exs.save()
-        return redirect("/expense/"),
+        return redirect("/expense/")
 
     return render(request,"edit_expense.html",{"exs":exs,"wal":wal})
