@@ -27,7 +27,7 @@ SECRET_KEY = 'g)zjoua3ud$)=ab4058_2clt@g&hs2lum6zibxq^2+_ex8*92c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["expensetracker2211.herokuapp.com"]
+ALLOWED_HOSTS = ["expensetracker22.herokuapp.com"]
 
 
 # Application definition
