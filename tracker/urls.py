@@ -1,19 +1,22 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 from tracker.views import *
 urlpatterns = [
-    path(r'^dashboard/',dashboard),
-    path(r'^wallet/',get_all_wallet),
-    path(r'^expense/',get_all_expense),
-    path(r'^income/',get_all_income),
-    path(r'^create_wallet/',create_wallet),
-    path(r'^create_income/',create_income),
-    path(r'^create_expense/',create_expense),
-    path(r'^delete_wallet/<int:wallet_id>/',delete_wallet),
-    path(r'^delete_income/<int:income_id>/',delete_income),
-    path(r'^delete_expense/<int:expense_id>/',delete_expense),
-    path(r"^edit_wallet/<int:wallet_id>/",edit_wallet),
-    path(r"^edit_income/<int:income_id>/",edit_income),
-    path(r"^edit_expense/<int:expense_id>/",edit_expense),
+    path('dashboard/',dashboard),
+    path('wallet/',get_all_wallet),
+    path('expense/',get_all_expense),
+    path('income/',get_all_income),
+    path('create_wallet/',create_wallet),
+    path('create_income/',create_income),
+    path('create_expense/',create_expense),
+    path('delete_wallet/<int:wallet_id>/',delete_wallet),
+    path('delete_income/<int:income_id>/',delete_income),
+    path('delete_expense/<int:expense_id>/',delete_expense),
+    path("edit_wallet/<int:wallet_id>/",edit_wallet),
+    path("edit_income/<int:income_id>/",edit_income),
+    path("edit_expense/<int:expense_id>/",edit_expense),
     
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
